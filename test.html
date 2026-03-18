@@ -5,35 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>数学学習ノート</title>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
   <style>
     :root {
-      --bg: #fefefe;
+      --bg: #ffffff;
       --card: #ffffff;
       --text: #202124;
       --muted: #5f6368;
       --line: #e0e0e0;
 
-      --blue: #4285f4;
       --red: #ea4335;
-      --yellow: #fbbc05;
-      --green: #34a853;
 
+      --blue: #4285f4;
       --blue-light: #e8f0fe;
-      --red-light: #fdecea;
-      --yellow-light: #fef7e0;
+
+      --green: #34a853;
       --green-light: #e6f4ea;
 
-      --shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      --yellow: #fbbc05;
+      --yellow-light: #fff8db;
+      --yellow-soft: #fef7e0;
+
+      --shadow: 0 2px 6px rgba(0,0,0,0.08);
       --radius: 14px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -49,14 +48,9 @@
       padding: 32px 0 64px;
     }
 
+    /* 🔴 タイトル */
     header {
-      background: linear-gradient(
-        90deg,
-        var(--blue),
-        var(--red),
-        var(--yellow),
-        var(--green)
-      );
+      background: var(--red);
       color: white;
       border-radius: 20px;
       padding: 36px 28px;
@@ -69,147 +63,83 @@
       font-size: clamp(1.8rem, 3vw, 2.8rem);
     }
 
-    header p {
-      margin: 0;
-      opacity: 0.96;
-    }
-
     nav.toc {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 20px 22px;
+      padding: 20px;
       box-shadow: var(--shadow);
       margin-bottom: 28px;
     }
 
-    nav.toc h2 {
-      margin-top: 0;
-      font-size: 1.15rem;
-      color: var(--blue);
-    }
-
-    nav.toc ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    nav.toc li {
-      margin: 8px 0;
-    }
+    nav.toc h2 { color: var(--blue); }
 
     nav.toc a {
       color: var(--blue);
       text-decoration: none;
-      font-weight: 600;
-    }
-
-    nav.toc a:hover {
-      text-decoration: underline;
     }
 
     section {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 28px 24px;
+      padding: 28px;
       box-shadow: var(--shadow);
       margin-bottom: 24px;
     }
 
     section h2 {
-      margin-top: 0;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #ececec;
-      font-size: 1.5rem;
       color: var(--blue);
-    }
-
-    h3 {
-      margin-top: 28px;
-      margin-bottom: 10px;
-      font-size: 1.15rem;
+      border-bottom: 2px solid #ececec;
     }
 
     .box {
       border-radius: 14px;
-      padding: 16px 18px;
+      padding: 16px;
       margin: 16px 0;
       border: 1px solid var(--line);
     }
 
+    /* 🟢 定義 */
     .definition {
       background: var(--green-light);
       border-left: 6px solid var(--green);
     }
 
-    .definition .label {
-      color: var(--green);
-    }
+    .definition .label { color: var(--green); }
 
-    .theorem {
+    /* 🔵 定理系 */
+    .theorem, .proposition, .corollary {
       background: var(--blue-light);
       border-left: 6px solid var(--blue);
     }
 
-    .theorem .label {
+    .theorem .label,
+    .proposition .label,
+    .corollary .label {
       color: var(--blue);
     }
 
-    .example {
-      background: var(--red-light);
-      border-left: 6px solid var(--red);
-    }
-
-    .example .label {
-      color: var(--red);
-    }
-
-    .note {
-      background: #fff8db;
-      border-left: 6px solid var(--yellow);
-    }
-
-    .note .label {
-      color: #b7791f;
-    }
-
-    .label {
-      font-weight: 700;
-      display: inline-block;
-      margin-bottom: 6px;
-    }
-
+    /* 🟡 証明（濃い） */
     details.proof {
-      margin: 16px 0;
-      border: 1px solid #fde293;
-      border-radius: 14px;
+      border: 1px solid #f4c542;
       background: var(--yellow-light);
-      overflow: hidden;
+      border-radius: 14px;
+      margin: 16px 0;
     }
 
     details.proof summary {
+      padding: 14px;
       cursor: pointer;
-      list-style: none;
-      padding: 14px 16px;
-      font-weight: 700;
-      user-select: none;
-      position: relative;
+      font-weight: bold;
       color: #b7791f;
-    }
-
-    details.proof summary::-webkit-details-marker {
-      display: none;
+      position: relative;
     }
 
     details.proof summary::after {
       content: "＋";
       position: absolute;
       right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.1rem;
-      color: #b7791f;
     }
 
     details.proof[open] summary::after {
@@ -217,228 +147,87 @@
     }
 
     .proof-content {
-      padding: 0 16px 16px;
-      border-top: 1px solid #f6d365;
+      padding: 16px;
+      border-top: 1px solid #f4c542;
+    }
+
+    /* 🟡 例（薄い） */
+    .example {
+      background: var(--yellow-soft);
+      border-left: 6px solid var(--yellow);
+    }
+
+    .example .label { color: #b7791f; }
+
+    /* 🟡 ノート（中間） */
+    .note {
+      background: #fff3bf;
+      border-left: 6px solid var(--yellow);
+    }
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 6px;
+      display: inline-block;
     }
 
     .math-block {
       overflow-x: auto;
-      padding: 8px 0;
-    }
-
-    code.inline {
-      background: #e8f0fe;
-      padding: 2px 7px;
-      border-radius: 8px;
-      font-size: 0.95em;
     }
 
     footer {
-      color: var(--muted);
       text-align: center;
+      color: var(--muted);
       margin-top: 32px;
-      font-size: 0.95rem;
-    }
-
-    .template-tip {
-      background: var(--blue-light);
-      border: 1px dashed var(--blue);
-      border-radius: 14px;
-      padding: 14px 16px;
-      margin-top: 18px;
-    }
-
-    @media (max-width: 700px) {
-      header, section, nav.toc {
-        border-radius: 16px;
-      }
-
-      section {
-        padding: 22px 18px;
-      }
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <h1>数学学習ノート</h1>
-      <p>定義・定理・証明を整理して、証明はクリック1つで開閉できる学習サイト</p>
-    </header>
+<div class="container">
 
-    <nav class="toc">
-      <h2>目次</h2>
-      <ul>
-        <li><a href="#how-to-use">使い方</a></li>
-        <li><a href="#sample-1">サンプル：実数の絶対値</a></li>
-        <li><a href="#sample-2">サンプル：数列の極限</a></li>
-        <li><a href="#template">コピペ用テンプレート</a></li>
-      </ul>
-    </nav>
+<header>
+  <h1>数学学習ノート</h1>
+  <p>定義 → 定理 → 証明 → 例 の流れで整理するサイト</p>
+</header>
 
-    <section id="how-to-use">
-      <h2>使い方</h2>
-      <p>
-        このページは、数学の学習内容を
-        <strong>定義 → 定理 → 証明 → 例</strong>
-        の流れで整理するための土台です。
-      </p>
+<nav class="toc">
+  <h2>目次</h2>
+  <ul>
+    <li><a href="#sample">サンプル</a></li>
+  </ul>
+</nav>
 
-      <div class="box note">
-        <div class="label">ポイント</div>
-        <ul>
-          <li>証明は <code class="inline">&lt;details&gt;</code> を使って開閉しています。</li>
-          <li>見出しを増やせば、分野ごとのノートにできます。</li>
-          <li>数式は <code class="inline">\( ... \)</code> や <code class="inline">\[ ... \]</code> で書けます。</li>
-        </ul>
-      </div>
-    </section>
+<section id="sample">
 
-    <section id="sample-1">
-      <h2>サンプル 1：実数の絶対値</h2>
+<div class="box definition">
+  <div class="label">定義</div>
+  <p>絶対値の定義</p>
+</div>
 
-      <div class="box definition">
-        <div class="label">定義</div>
-        <p>
-          実数 \(x\) に対して、その絶対値 \(|x|\) は
-        </p>
-        <div class="math-block">
-          \[
-            |x| =
-            \begin{cases}
-              x & (x \ge 0) \\
-              -x & (x < 0)
-            \end{cases}
-          \]
-        </div>
-        <p>で定義される。</p>
-      </div>
+<div class="box theorem">
+  <div class="label">定理</div>
+  <p>|x| ≥ 0</p>
+</div>
 
-      <div class="box theorem">
-        <div class="label">定理</div>
-        <p>任意の実数 \(x\) について、\(|x| \ge 0\) が成り立つ。</p>
-      </div>
-
-      <details class="proof">
-        <summary>証明を開く / 閉じる</summary>
-        <div class="proof-content">
-          <p>
-            定義より、\(x \ge 0\) なら \(|x| = x\) であるから \(|x| \ge 0\)。
-          </p>
-          <p>
-            一方、\(x < 0\) なら \(|x| = -x\) である。負の数に \(-1\) をかけると正になるので、
-            \(-x > 0\) したがって \(|x| \ge 0\)。
-          </p>
-          <p>以上より、任意の実数 \(x\) に対して \(|x| \ge 0\) が成り立つ。</p>
-        </div>
-      </details>
-
-      <div class="box example">
-        <div class="label">例</div>
-        <ul>
-          <li>\(|3| = 3\)</li>
-          <li>\(|-5| = 5\)</li>
-          <li>\(|0| = 0\)</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="sample-2">
-      <h2>サンプル 2：数列の極限</h2>
-
-      <div class="box definition">
-        <div class="label">定義</div>
-        <p>
-          数列 \(a_n\) が実数 \(L\) に収束するとは、
-          任意の \(\varepsilon > 0\) に対し、ある自然数 \(N\) が存在して、
-          \(n \ge N\) なら
-        </p>
-        <div class="math-block">
-          \[
-            |a_n - L| < \varepsilon
-          \]
-        </div>
-        <p>が成り立つことをいう。</p>
-      </div>
-
-      <div class="box theorem">
-        <div class="label">定理</div>
-        <p>
-          数列 \(a_n = \frac{1}{n}\) は \(0\) に収束する。
-        </p>
-      </div>
-
-      <details class="proof">
-        <summary>証明を開く / 閉じる</summary>
-        <div class="proof-content">
-          <p>
-            任意の \(\varepsilon > 0\) をとる。
-            アルキメデス性により、\(\frac{1}{N} < \varepsilon\) となる自然数 \(N\) をとれる。
-          </p>
-          <p>
-            このとき \(n \ge N\) なら
-          </p>
-          <div class="math-block">
-            \[
-              \left| \frac{1}{n} - 0 \right| = \frac{1}{n} \le \frac{1}{N} < \varepsilon
-            \]
-          </div>
-          <p>
-            となる。したがって定義より
-            \(\frac{1}{n} \to 0\)。
-          </p>
-        </div>
-      </details>
-
-      <div class="box note">
-        <div class="label">学習メモ</div>
-        <p>
-          こういう \(\varepsilon\)-\(N\) 証明は、定義をそのまま使う練習としてかなり重要。
-        </p>
-      </div>
-    </section>
-
-    <section id="template">
-      <h2>コピペ用テンプレート</h2>
-      <p>
-        下の部分をコピペして、中身だけ差し替えれば新しい定理をどんどん追加できます。
-      </p>
-
-      <pre style="white-space: pre-wrap; background:#202124; color:#f8f9fa; padding:16px; border-radius:14px; overflow-x:auto;"><code>&lt;div class="box definition"&gt;
-  &lt;div class="label"&gt;定義&lt;/div&gt;
-  &lt;p&gt;ここに定義を書く。&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class="box theorem"&gt;
-  &lt;div class="label"&gt;定理&lt;/div&gt;
-  &lt;p&gt;ここに定理を書く。&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;details class="proof"&gt;
-  &lt;summary&gt;証明を開く / 閉じる&lt;/summary&gt;
-  &lt;div class="proof-content"&gt;
-    &lt;p&gt;ここに証明を書く。&lt;/p&gt;
-    &lt;p&gt;数式は \( a^2+b^2=c^2 \) のように書ける。&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/details&gt;
-
-&lt;div class="box example"&gt;
-  &lt;div class="label"&gt;例&lt;/div&gt;
-  &lt;p&gt;ここに例を書く。&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-
-      <div class="template-tip">
-        証明を隠せる仕組みの本体は
-        <code class="inline">&lt;details class="proof"&gt;</code>
-        と
-        <code class="inline">&lt;summary&gt;</code>
-        の部分です。
-      </div>
-    </section>
-
-    <footer>
-      数学の分野ごとにページを分けるなら、線形代数・解析・位相・相対論、みたいに増やしていけます。
-    </footer>
+<details class="proof">
+  <summary>証明</summary>
+  <div class="proof-content">
+    <p>場合分けで示す。</p>
   </div>
+</details>
+
+<div class="box example">
+  <div class="label">例</div>
+  <p>|-3| = 3</p>
+</div>
+
+</section>
+
+<footer>
+  数学ノート
+</footer>
+
+</div>
 </body>
 </html>
