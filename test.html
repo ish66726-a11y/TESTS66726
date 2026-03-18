@@ -24,15 +24,12 @@
 
       --yellow: #fbbc05;
       --yellow-light: #fff8db;
-      --yellow-soft: #fef7e0;
 
       --shadow: 0 2px 6px rgba(0,0,0,0.08);
       --radius: 14px;
     }
 
     * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -48,7 +45,7 @@
       padding: 32px 0 64px;
     }
 
-    /* 🔴 タイトル */
+    /* 🔴 ヘッダー */
     header {
       background: var(--red);
       color: white;
@@ -63,6 +60,7 @@
       font-size: clamp(1.8rem, 3vw, 2.8rem);
     }
 
+    /* 目次 */
     nav.toc {
       background: var(--card);
       border: 1px solid var(--line);
@@ -79,6 +77,7 @@
       text-decoration: none;
     }
 
+    /* セクション */
     section {
       background: var(--card);
       border: 1px solid var(--line);
@@ -108,21 +107,25 @@
 
     .definition .label { color: var(--green); }
 
-    /* 🔵 定理系 */
-    .theorem, .proposition, .corollary {
+    /* 🔵 定理・命題・系・補題 */
+    .theorem,
+    .proposition,
+    .corollary,
+    .lemma {
       background: var(--blue-light);
       border-left: 6px solid var(--blue);
     }
 
     .theorem .label,
     .proposition .label,
-    .corollary .label {
+    .corollary .label,
+    .lemma .label {
       color: var(--blue);
     }
 
-    /* 🟡 証明（濃い） */
+    /* 🟡 証明 */
     details.proof {
-      border: 1px solid #f4c542;
+      border: 1px solid var(--yellow);
       background: var(--yellow-light);
       border-radius: 14px;
       margin: 16px 0;
@@ -148,20 +151,20 @@
 
     .proof-content {
       padding: 16px;
-      border-top: 1px solid #f4c542;
+      border-top: 1px solid var(--yellow);
     }
 
-    /* 🟡 例（薄い） */
+    /* 🟡 例 */
     .example {
-      background: var(--yellow-soft);
+      background: var(--yellow-light);
       border-left: 6px solid var(--yellow);
     }
 
     .example .label { color: #b7791f; }
 
-    /* 🟡 ノート（中間） */
+    /* 🟡 メモ */
     .note {
-      background: #fff3bf;
+      background: var(--yellow-light);
       border-left: 6px solid var(--yellow);
     }
 
@@ -169,10 +172,6 @@
       font-weight: bold;
       margin-bottom: 6px;
       display: inline-block;
-    }
-
-    .math-block {
-      overflow-x: auto;
     }
 
     footer {
