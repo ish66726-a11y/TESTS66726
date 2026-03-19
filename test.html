@@ -193,6 +193,8 @@
   <h2>目次</h2>
   <ul>
     <li><a href="#sample">サンプル</a></li>
+　　<li><a href="#order">順序</a></li>
+    <li><a href="#sample2">サンプル2</a></li>
   </ul>
 </nav>
 
@@ -222,8 +224,81 @@
 
 </section>
 
+</section>
 
-  <section id="sample">
+<section id="order">
+
+<div class="box definition">
+  <div class="label">定義（順序関係）</div>
+  <p>
+    集合 \( X \) 上の二項関係 \( \le \) が次の3つを満たすとき、順序関係という：
+  </p>
+  <ul>
+    <li>反射律：\( a \le a \)</li>
+    <li>反対称律：\( a \le b \) かつ \( b \le a \) ならば \( a = b \)</li>
+    <li>推移律：\( a \le b \) かつ \( b \le c \) ならば \( a \le c \)</li>
+  </ul>
+</div>
+
+<div class="box definition">
+  <div class="label">定義（半順序集合）</div>
+  <p>
+    集合 \( X \) と順序関係 \( \le \) の組 \( (X, \le) \) を半順序集合（poset）という。
+  </p>
+</div>
+
+<div class="box definition">
+  <div class="label">定義（全順序）</div>
+  <p>
+    半順序集合 \( (X, \le) \) において、任意の \( a, b \in X \) に対して
+    \( a \le b \) または \( b \le a \) が成り立つとき、全順序という。
+  </p>
+</div>
+
+<div class="box theorem">
+  <div class="label">命題</div>
+  <p>
+    任意の集合 \( X \) に対し、等号関係 \( = \) は半順序を定める。
+  </p>
+</div>
+
+<details class="proof">
+  <summary>証明</summary>
+  <div class="proof-content">
+    <p>
+      反射律：任意の \( a \) に対して \( a = a \) は明らか。<br>
+      反対称律：\( a = b \) かつ \( b = a \) ならば \( a = b \)。<br>
+      推移律：\( a = b \), \( b = c \) ならば \( a = c \)。<br>
+      よって、等号は順序関係である。
+    </p>
+  </div>
+</details>
+
+<div class="box example">
+  <div class="label">例1</div>
+  <p>
+    自然数集合 \( \mathbb{N} \) における通常の大小関係 \( \le \) は全順序である。
+  </p>
+</div>
+
+<div class="box example">
+  <div class="label">例2</div>
+  <p>
+    集合の包含関係 \( \subseteq \) は半順序であるが、全順序ではない。<br>
+    （例：\( \{1\} \) と \( \{2\} \) は比較できない）
+  </p>
+</div>
+
+<div class="box example">
+  <div class="label">例3</div>
+  <p>
+    整数の「割り切る」関係（\( a \mid b \)）も半順序を与える。
+  </p>
+</div>
+
+</section>
+
+  <section id="sample2">
 
 <div class="box definition">
   <div class="label">定義</div>
