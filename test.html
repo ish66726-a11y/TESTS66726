@@ -1,301 +1,252 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>数学学習ノート</title>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>数学学習ノート</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <style>
-    :root {
-      --bg: #ffffff;
-      --card: #ffffff;
-      --text: #202124;
-      --muted: #5f6368;
-      --line: #e0e0e0;
+<style>
+:root {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #202124;
+  --line: #e0e0e0;
 
-      --red: #ea4335;
+  --blue: #4285f4;
+  --blue-light: #e8f0fe;
 
-      --blue: #4285f4;
-      --blue-light: #e8f0fe;
+  --yellow: #fbbc05;
+  --yellow-light: #fff3c4;
+  --cream: #fffaf0;
 
-      --green: #34a853;
-      --green-light: #e6f4ea;
+  --green: #34a853;
+  --green-light: #e6f4ea;
 
-      --yellow: #fbbc05;
-      --yellow-light: #fff8db;
+  --red: #ea4335;
+  --red-light: #fde8e6;
+}
 
-      --shadow: 0 2px 6px rgba(0,0,0,0.08);
-      --radius: 14px;
-    }
+body {
+  margin: 0;
+  font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+}
 
-    * { box-sizing: border-box; }
+.container {
+  width: min(1080px, 92%);
+  margin: 0 auto;
+  padding: 32px 0 64px;
+}
 
-    body {
-      margin: 0;
-      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.85;
-    }
+/* セクション */
+section {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
 
-    .container {
-      width: min(1080px, 92%);
-      margin: 0 auto;
-      padding: 32px 0 64px;
-    }
+section h2 {
+  color: var(--blue);
+  border-bottom: 2px solid #ececec;
+  padding-bottom: 10px;
+}
 
-    /* 🔴 ヘッダー */
-    header {
-      background: var(--red);
-      color: white;
-      border-radius: 20px;
-      padding: 36px 28px;
-      box-shadow: var(--shadow);
-      margin-bottom: 28px;
-    }
+/* 共通BOX */
+.box {
+  border-radius: 14px;
+  padding: 18px;
+  margin: 18px 0;
+  border: 1px solid var(--line);
+}
 
-    header h1 {
-      margin: 0 0 8px;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-    }
+/* 🔥 見出し（ここが今回の本体） */
+.box-header {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
 
-    /* 目次 */
-    nav.toc {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      margin-bottom: 28px;
-    }
+.label {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
 
-    nav.toc h2 { color: var(--blue); }
+.title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
 
-    nav.toc a {
-      color: var(--blue);
-      text-decoration: none;
-    }
+/* 定義 */
+.definition {
+  background: var(--blue-light);
+  border-left: 6px solid var(--blue);
+}
+.definition .label { color: var(--blue); }
 
-    /* セクション */
-    section {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-    }
+/* 定理系 */
+.theorem,
+.proposition,
+.lemma,
+.corollary {
+  background: var(--yellow-light);
+  border-left: 6px solid var(--yellow);
+}
+.theorem .label,
+.proposition .label,
+.lemma .label,
+.corollary .label {
+  color: #b7791f;
+}
 
-    section h2 {
-      color: var(--blue);
-      border-bottom: 2px solid #ececec;
-    }
+/* 証明 */
+details.proof {
+  background: var(--cream);
+  border-radius: 14px;
+  margin: 16px 0;
+}
+details.proof summary {
+  padding: 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .box {
-      border-radius: 14px;
-      padding: 16px;
-      margin: 16px 0;
-      border: 1px solid var(--line);
-    }
+/* 例 */
+details.example {
+  background: var(--green-light);
+  border-radius: 14px;
+  margin: 16px 0;
+}
+details.example summary {
+  padding: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--green);
+}
 
-    /* 🟢 定義 */
-    .definition {
-      background: var(--green-light);
-      border-left: 6px solid var(--green);
-    }
+/* まとめ */
+.summary-box {
+  background: var(--red-light);
+  border-left: 6px solid var(--red);
+}
+.summary-box .label { color: var(--red); }
 
-    .definition .label { color: var(--green); }
-
-    /* 🔵 定理・命題・系・補題 */
-    .theorem,
-    .proposition,
-    .corollary,
-    .lemma {
-      background: var(--blue-light);
-      border-left: 6px solid var(--blue);
-    }
-
-    .theorem .label,
-    .proposition .label,
-    .corollary .label,
-    .lemma .label {
-      color: var(--blue);
-    }
-
-    /* 🟡 証明 */
-    details.proof {
-      border: 1px solid var(--yellow);
-      background: var(--yellow-light);
-      border-radius: 14px;
-      margin: 16px 0;
-    }
-
-    details.proof summary {
-      padding: 14px;
-      cursor: pointer;
-      font-weight: bold;
-      color: #b7791f;
-      position: relative;
-    }
-
-    details.proof summary::after {
-      content: "＋";
-      position: absolute;
-      right: 16px;
-    }
-
-    details.proof[open] summary::after {
-      content: "－";
-    }
-
-    .proof-content {
-      padding: 16px;
-      border-top: 1px solid var(--yellow);
-    }
-
-    /* 🟡 例 */
-    .example {
-      background: var(--yellow-light);
-      border-left: 6px solid var(--yellow);
-    }
-
-    .example .label { color: #b7791f; }
-
-    /* 🟡 メモ */
-    .note {
-      background: var(--yellow-light);
-      border-left: 6px solid var(--yellow);
-    }
-
-    .label {
-      font-weight: bold;
-      margin-bottom: 6px;
-      display: inline-block;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--muted);
-      margin-top: 32px;
-    }
-  </style>
+</style>
 </head>
 
 <body>
 <div class="container">
 
-<header>
-  <h1>数学学習ノート</h1>
-</header>
+<!-- 章タイトル -->
+<h1>章タイトル</h1> 
 
-<nav class="toc">
-  <h2>目次</h2>
-  <ul>
-　　<li><a href="#order">順序</a></li>
-    <li><a href="#sample2">サンプル2</a></li>
-  </ul>
-</nav>
+<!-- 目次 -->
+<li><a href="#section1">第１節</a></li>
+<li><a href="#section2">第２節</a></li>
 
-<section id="order">
 
+
+
+<!-- 飛び先 --><!-- 節タイトル -->
+<h1 id="section1">第１節</h1>
+
+<!-- 定義 -->
 <div class="box definition">
-  <div class="label">定義（順序関係）</div>
-  <p>
-    集合 \( X \) 上の二項関係 \( \le \) が次の3つを満たすとき、順序関係という：
-  </p>
-  <ul>
-    <li>反射律：\( a \le a \)</li>
-    <li>反対称律：\( a \le b \) かつ \( b \le a \) ならば \( a = b \)</li>
-    <li>推移律：\( a \le b \) かつ \( b \le c \) ならば \( a \le c \)</li>
-  </ul>
+  <div class="box-header">
+    <span class="label">定義</span>
+    <span class="title">定義するもの</span>
+  </div> 
+  <p>定義をここに書く</p>
 </div>
 
-<div class="box definition">
-  <div class="label">定義（半順序集合）</div>
-  <p>
-    集合 \( X \) と順序関係 \( \le \) の組 \( (X, \le) \) を半順序集合（poset）という。
-  </p>
-</div>
-
-<div class="box definition">
-  <div class="label">定義（全順序）</div>
-  <p>
-    半順序集合 \( (X, \le) \) において、任意の \( a, b \in X \) に対して
-    \( a \le b \) または \( b \le a \) が成り立つとき、全順序という。
-  </p>
-</div>
-
+<!-- 定理 証明 -->
 <div class="box theorem">
-  <div class="label">命題</div>
-  <p>
-    任意の集合 \( X \) に対し、等号関係 \( = \) は半順序を定める。
-  </p>
+  <div class="box-header">
+    <span class="label">定理</span>
+    <span class="title">定理のタイトル</span>
+  </div>
+  <p>定理の内容</p>
 </div>
-
 <details class="proof">
   <summary>証明</summary>
   <div class="proof-content">
-    <p>
-      反射律：任意の \( a \) に対して \( a = a \) は明らか。<br>
-      反対称律：\( a = b \) かつ \( b = a \) ならば \( a = b \)。<br>
-      推移律：\( a = b \), \( b = c \) ならば \( a = c \)。<br>
-      よって、等号は順序関係である。
-    </p>
+    <p>証明をここに書く。</p>
   </div>
 </details>
 
-<div class="box example">
-  <div class="label">例1</div>
-  <p>
-    自然数集合 \( \mathbb{N} \) における通常の大小関係 \( \le \) は全順序である。
-  </p>
+
+<!-- 系 証明 -->
+<div class="box corollary">
+  <div class="box-header">
+    <span class="label">系</span>
+    <span class="title">系のタイトル</span>
+  </div>
+  <p>系の内容</p>
 </div>
-
-<div class="box example">
-  <div class="label">例2</div>
-  <p>
-    集合の包含関係 \( \subseteq \) は半順序であるが、全順序ではない。<br>
-    （例：\( \{1\} \) と \( \{2\} \) は比較できない）
-  </p>
-</div>
-
-<div class="box example">
-  <div class="label">例3</div>
-  <p>
-    整数の「割り切る」関係（\( a \mid b \)）も半順序を与える。
-  </p>
-</div>
-
-</section>
-
-  <section id="sample2">
-
-<div class="box definition">
-  <div class="label">定義</div>
-  <p>定義をここに記す</p>
-</div>
-
-<div class="box theorem">
-  <div class="label">定理</div>
-  <p>定理をここに記す</p>
-</div>
-
 <details class="proof">
   <summary>証明</summary>
   <div class="proof-content">
-    <p>証明をここに記す</p>
+    <p>証明をここに書く。</p>
   </div>
 </details>
 
-<div class="box example">
-  <div class="label">例</div>
-  <p>例をここに記す</p>
+
+<!-- 補題 証明 -->
+<div class="box lemma">
+  <div class="box-header">
+    <span class="label">補題</span>
+    <span class="title">補題のタイトル</span>
+  </div>
+  <p>補題の内容</p>
 </div>
-
-</section>
-
+<details class="proof">
+  <summary>証明</summary>
+  <div class="proof-content">
+    <p>証明をここに書く。</p>
+  </div>
+</details>
   
+<!-- 飛び先 --><!-- 節タイトル -->
+<h1 id="section2">第２節</h1>
+
+<!-- 定義 -->
+<div class="box definition">
+  <div class="box-header">
+    <span class="label">定義</span>
+    <span class="title">定義するもの</span>
+  </div>
+  <p>定義をここに書く</p>
+  <ul>
+    <li>箇条書き１</li>
+    <li>箇条書き２</li>
+    <li>箇条書き３</li>
+  </ul>
+</div>
+
+
+<!-- 命題 証明 -->
+<div class="box proposition">
+  <div class="box-header">
+    <span class="label">命題</span>
+    <span class="title">命題のタイトル</span>
+  </div>
+  <p>命題の内容</p>
+</div>
+<details class="proof">
+  <summary>証明</summary>
+  <div class="proof-content">
+    <p>証明をここに書く。</p>
+  </div>
+</details>
+  
+
+ 
+</section>
 </div>
 </body>
 </html>
