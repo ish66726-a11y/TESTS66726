@@ -381,6 +381,75 @@ details.example summary {
 <!-- 飛び先 --><!-- 節タイトル -->
 <h1 id="curve_classify">4.曲線と因果性</h1>
 
+<!-- 定義 -->
+<div class="box definition">
+  <div class="box-header">
+    <span class="label">定義</span>
+    <span class="title">曲線</span>
+  </div>
+  <p>多様体 \(M\) 上の区間 \(I \subset \mathbb{R}\) からの滑らかな写像</p>
+  <p>\[
+  \gamma : I \to M
+  \]</p>
+  <p>を曲線という．</p>
+</div>
+
+<!-- 定義 -->
+<div class="box definition">
+  <div class="box-header">
+    <span class="label">定義</span>
+    <span class="title">曲線の接ベクトル</span>
+  </div>
+  <p>曲線 \(\gamma(\lambda)\) に対して，各点で</p>
+  <p>\[
+  \dot{\gamma}(\lambda) := \frac{d\gamma}{d\lambda}
+  \]</p>
+  <p>をその点における接ベクトルという．</p>
+</div>
+
+<!-- 定義 -->
+<div class="box definition">
+  <div class="box-header">
+    <span class="label">定義</span>
+    <span class="title">曲線の因果分類</span>
+  </div>
+  <p>\((M,g)\) をローレンツ多様体とする．曲線 \(\gamma\) が次を満たすとき：</p>
+  <ul>
+    <li>各点で接ベクトル \(\dot{\gamma}\) が時間的であるとき，
+    \(\gamma\) を時間的曲線（timelike curve）という．</li>
+    <li>各点で接ベクトル \(\dot{\gamma}\) が時間的または光的であるとき，
+    \(\gamma\) を因果曲線（causal curve）という．</li>
+  </ul>
+</div>
+
+<!-- 定義 -->
+<div class="box definition">
+  <div class="box-header">
+    <span class="label">定義</span>
+    <span class="title">未来向き曲線</span>
+  </div>
+  <p>\((M,g)\) を時間向き付けられたローレンツ多様体とする．</p>
+  <p>曲線 \(\gamma\) が各点でその接ベクトル \(\dot{\gamma}\) が未来向き時間的（または因果的）であるとき，
+  \(\gamma\) を未来向き曲線（future-directed curve）という．</p>
+</div>
+
+<!-- 命題 証明 -->
+<div class="box proposition">
+  <div class="box-header">
+    <span class="label">命題</span>
+    <span class="title">時間的曲線と因果曲線の関係</span>
+  </div>
+  <p>任意の時間的曲線は因果曲線である．</p>
+</div>
+<details class="proof">
+  <summary>証明</summary>
+  <div class="proof-content">
+  <p>時間的曲線とは，各点で接ベクトルが時間的である曲線である．</p>
+  <p>一方，因果曲線とは，各点で接ベクトルが時間的または光的である曲線である．</p>
+  <p>したがって，時間的であることから直ちに因果的であることが従う．</p>
+  </div>
+</details>
+
 <!-- 飛び先 --><!-- 節タイトル -->
 <h1 id="causality">5.因果関係の定義</h1>
 
