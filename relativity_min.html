@@ -146,12 +146,15 @@ details.example summary {
 <h1>相対性理論における時空</h1> 
 
 <!-- 目次 -->
-<li><a href="#spacetime">時空の概念</a></li>
-<li><a href="#causality">因果構造</a></li>
+<li><a href="#Lorentzian_manifold">1.ローレンツ多様体の基礎</a></li>
+<li><a href="#vector_classify">2.ベクトルの因果分類</a></li>
+<li><a href="#curve_classify">3.曲線と因果性</a></li>
+<li><a href="#causality">4.因果関係の定義</a></li>
+
 
 
 <!-- 飛び先 --><!-- 節タイトル -->
-<h1 id="spacetime">時空の概念</h1>
+<h1 id="Lorentzian_manifold">ローレンツ多様体の基礎</h1>
 
 <!-- 定義 -->
 <div class="box definition">
@@ -214,66 +217,15 @@ details.example summary {
 
 
 <!-- 飛び先 --><!-- 節タイトル -->
-<h1 id="causality">因果構造</h1>
+<h1 id="vector_classify">2.ベクトルの因果分類</h1>
 
-<!-- 定義 -->
-<div class="box definition">
-  <div class="box-header">
-    <span class="label">定義</span>
-    <span class="title">時空</span>
-  </div>
-  <p><strong>時空</strong>とは，4次元の滑らかな多様体 \(M\) にローレンツ計量 \(g\) が入った組 \((M,g)\) のことである。</p> 
-  <p>ここで，<strong>ローレンツ計量</strong>とは，各点 \(p\in M\) において接空間 \(T_pM\) 上の対称な非退化2次形式であり，適当な基底をとると成分が</p> 
-  <p>\[ \mathrm{diag}(-1,+1,+1,+1) \]</p> <p>の形に書けるものをいう。</p> <p>この符号の違いによって，時間方向と空間方向が区別される。</p>
-</div>
+<!-- 飛び先 --><!-- 節タイトル -->
+<h1 id="curve_classify">3.曲線と因果性</h1>
 
-<!-- 定義 -->
-<div class="box definition">
-  <div class="box-header">
-    <span class="label">定義</span>
-    <span class="title">計量テンソル</span>
-  </div>
-
-  <p><strong>計量テンソル</strong> \(g\) は，各点で2つの接ベクトル \(u,v\in T_pM\) に対して実数 \(g(u,v)\) を対応させる \((0,2)\) 型テンソルである。</p> 
-  <p>特に</p> <p>\[ g(v,v) \]</p> <p>はベクトル \(v\) の「長さの2乗」に対応する量であり，ローレンツ幾何ではこの値の号が重要になる。</p>
-</div>
-
-<!-- 定義 -->
-<div class="box definition">
-  <div class="box-header">
-    <span class="label">定義</span>
-    <span class="title">接ベクトルの因果的分類</span>
-  </div>
-
- <p>ローレンツ多様体 \((M,g)\) のある点 \(p\in M\) におけるベクトル \(v\in T_pM\) は，\(g(v,v)\) の符号によって次のように分類される。</p>
-  <p> ・<strong>時間的ベクトル</strong>：\(\;g(v,v)&lt;0\)<br> 
-    ・<strong>光的ベクトル</strong>（ヌルベクトル）：\(\;g(v,v)=0,\;v\neq 0\)<br> 
-    ・<strong>空間的ベクトル</strong>：\(\;g(v,v)&gt;0\) </p> 
-  <p>光的ベクトル全体は各点で光円錐をつくり，その内側が時間的方向，外側が空間的方向になる。</p>
-</div>
+<!-- 飛び先 --><!-- 節タイトル -->
+<h1 id="causality">4.因果関係の定義</h1>
 
 
-
-<!-- 例 -->
-<details class="example">
-  <summary>例：ミンコフスキー時空</summary>
-  <div style="padding:16px;">
-    <p><strong>ミンコフスキー時空</strong></p> <p>特殊相対論における最も基本的な時空であり，</p> <p>\[ M=\mathbb{R}^4 \]</p> <p>の上に</p> 
-    <p>\[ ds^2=-dt^2+dx^2+dy^2+dz^2 \]</p> <p>という計量を入れたものである。</p> <p>この時空は平坦であり，重力が存在しない理想化された時空を表す。</p> <p>ベクトル \(v=(v^t,v^x,v^y,v^z)\) に対して，</p> 
-    <p>\[ g(v,v)=-(v^t)^2+(v^x)^2+(v^y)^2+(v^z)^2 \]</p> <p>となるので，この値の符号によって時間的・光的・空間的が決まる。</p>
-  </div>
-</details>
-
-  <!-- 例 -->
-<details class="example">
-  <summary>例：Schwarzschild時空</summary>
-  <div style="padding:16px;">
-    <p>球対称な質量のまわりの真空時空を表す代表的な解であり，座標 \((t,r,\theta,\phi)\) を用いると計量は</p>
-    <p>\[ ds^2= -\left(1-\frac{2M}{r}\right)dt^2 +\left(1-\frac{2M}{r}\right)^{-1}dr^2 +r^2(d\theta^2+\sin^2\theta\, d\phi^2) \]</p> <p>で与えられる。</p> 
-    <p>ここで \(M\) は中心天体の質量に対応する定数である。</p> <p>この時空は，重力によって時空が曲がっている典型例であり，平坦なミンコフスキー時空とは異なり，計量成分が位置 \(r\) に依存する。</p> 
-    <p>特に \(r=2M\) は重要な半径であり，事象の地平面として現れる。</p>
-  </div>
-</details>
 
   
 </section>
