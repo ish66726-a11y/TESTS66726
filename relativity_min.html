@@ -218,77 +218,47 @@ details.example summary {
   <p>このとき組 \((M,g)\) を <strong>ローレンツ多様体</strong>という．</p>
 　</div>
   
-<!-- 定義 -->
-<div class="box definition">
-  <div class="box-header">
-    <span class="label">定義</span>
-    <span class="title">時間向き付け可能性</span>
-  </div>
-  <p>ローレンツ多様体 \((M,g)\) において，
-  連続な時間的ベクトル場 \(X\) が全体で存在するとき，
-  \(M\) は <strong>時間向き付け可能</strong>という．</p>
-</div>
-
-<!-- 定義 -->
-<div class="box definition">
-  <div class="box-header">
-    <span class="label">定義</span>
-    <span class="title">時空</span>
-  </div>
-  <p>ローレンツ多様体 \((M,g)\) が <strong>時間向き付け可能</strong>であり，
-  全体で一貫した時間方向（future / past）が選べるとき，
-  \((M,g)\) を <strong>時空</strong>という．</p>
-</div>
-
-
-  
-<!-- 例 -->
-<details class="example">
-  <summary>例：ミンコフスキー時空</summary>
-  <div style="padding:16px;">
-  <p>\(\mathbb{R}^4\) に座標 \((t,x,y,z)\) を入れ，計量</p>
-  <p>\[
-  g = -dt^2 + dx^2 + dy^2 + dz^2
-  \]</p>
-  <p>を入れたものをミンコフスキー時空という．</p>
-  <p>このときベクトル場</p>
-  <p>\[
-  X = \frac{\partial}{\partial t}
-  \]</p>
-  <p>は各点で時間的ベクトルであり，かつ連続である．</p>
-  <p>したがってこのローレンツ多様体は時間向き付け可能である．</p>
-  <p>このベクトル場を用いて，未来向き（future-directed）と過去向き（past-directed）を
-  一貫して定めることができるため，\((\mathbb{R}^4, g)\) は時空である．</p>
-  </div>
-</details>
-
-  <!-- 例 -->
-<details class="example">
-  <summary>例：時間向き付け不可能な例</summary>
-  <div style="padding:16px;">
-  <p>次のようにして得られるローレンツ多様体を考える．</p>
-  <p>\(\mathbb{R}^2\) に座標 \((t,x)\) を入れ，計量</p>
-  <p>\[
-  g = -dt^2 + dx^2
-  \]</p>
-  <p>を入れる．これは2次元ミンコフスキー時空である．</p>
-  <p>ここで同値関係</p>
-  <p>\[
-  (t,x) \sim (-t, x+1)
-  \]</p>
-  <p>によって商空間 \(M\) を作る．</p>
-  <p>このとき，空間方向に一周すると時間座標の符号が反転するため，
-  連続な時間的ベクトル場を全体で定めることができない．</p>
-  <p>実際，ある点で未来向きに選んだベクトルは，
-  一周して戻ると過去向きに変わってしまう．</p>
-  <p>したがってこのローレンツ多様体は時間向き付け可能ではない．</p>
-  </div>
-</details>
 
 
 <!-- 飛び先 --><!-- 節タイトル -->
 <h1 id="vector_classify">2.ベクトルの因果分類</h1>
 
+<!-- 定義 -->  
+<div class="box definition">
+  <div class="box-header">
+    <span class="label">定義</span>
+    <span class="title">ベクトルの因果分類</span>
+  </div>
+  <p>\((M,g)\) をローレンツ多様体とし，\(p \in M\)，\(v \in T_pM\) をベクトルとする．</p>
+  <ul><li><strong>時間的（timelike）</strong>：
+      \[
+      g(v,v) < 0
+      \]</li>
+    <li><strong>光的（null または lightlike）</strong>：
+      \[
+      g(v,v) = 0,\quad v \neq 0
+      \]</li>
+    <li><strong>空間的（spacelike）</strong>：
+      \[
+      g(v,v) > 0
+      \]</li></ul>
+</div>
+
+<!-- 定義 -->
+<div class="box definition">
+  <div class="box-header">
+    <span class="label">定義</span>
+    <span class="title">光円錐</span>
+  </div>
+  <p>点 \(p \in M\) における接空間 \(T_pM\) において，</p>
+  <ul>
+    <li>\(g(v,v) = 0\) を満たすベクトル全体を <strong>光円錐（light cone）</strong>という．</li>
+    <li>\(g(v,v) < 0\) を満たすベクトル全体は光円錐の内部をなす．</li>
+    <li>\(g(v,v) > 0\) を満たすベクトルは光円錐の外部に属する．</li>
+  </ul>
+</div>
+
+  
 <!-- 定義 -->
 <div class="box definition">
   <div class="box-header">
@@ -299,6 +269,8 @@ details.example summary {
   連続な時間的ベクトル場 \(X\) が全体で存在するとき，
   \(M\) は <strong>時間向き付け可能</strong>という．</p>
 </div>
+
+  
 
 <!-- 定義 -->
 <div class="box definition">
