@@ -160,11 +160,24 @@ details.example summary {
 <div class="box definition">
   <div class="box-header">
     <span class="label">定義</span>
-    <span class="title">時空</span>
+    <span class="title">多様体</span>
+  </div> <p>位相空間 \(M\) が次の条件を満たすとき，\(M\) を <strong>\(n\) 次元滑らかな多様体</strong>という：</p>
+  <ol> <li>\(M\) はハウスドルフかつ第2可算である．</li> <li>\(M\) は開集合族 \(\{O_\alpha\}_{\alpha\in A}\) によって被覆される：</li> </ol> 
+  <p>\[ M = \bigcup_{\alpha\in A} O_\alpha \]</p> <ol start="3"> <li>各 \(O_\alpha\) に対して，同相写像（座標写像）</li> </ol>
+  <p>\[ \varphi_\alpha : O_\alpha \to U_\alpha \subset \mathbb{R}^n \]</p> <p>が存在し，\(U_\alpha\) は \(\mathbb{R}^n\) の開集合である．</p> <ol start="4"> <li>重なり部分における遷移写像</li> </ol>
+  <p>\[ \varphi_\alpha \circ \varphi_\beta^{-1} \]</p> <p>は滑らか（\(C^\infty\)）である．</p> </div>
+
+<!-- 定義 -->
+<div class="box definition">
+  <div class="box-header">
+    <span class="label">定義</span>
+    <span class="title">接ベクトル</span>
   </div>
-  <p><strong>時空</strong>とは，4次元の滑らかな多様体 \(M\) にローレンツ計量 \(g\) が入った組 \((M,g)\) のことである。</p> 
-  <p>ここで，<strong>ローレンツ計量</strong>とは，各点 \(p\in M\) において接空間 \(T_pM\) 上の対称な非退化2次形式であり，適当な基底をとると成分が</p> 
-  <p>\[ \mathrm{diag}(-1,+1,+1,+1) \]</p> <p>の形に書けるものをいう。</p> <p>この符号の違いによって，時間方向と空間方向が区別される。</p>
+<p>\(M\) を滑らかな多様体，\(p \in M\) を点とする．</p> <p>滑らかな関数全体の集合を</p> 
+  <p>\[ C^\infty(M) := \{f : M \to \mathbb{R} \mid f \text{ は滑らか}\} \]</p> <p>とする．</p> 
+  <p>写像 \(v : C^\infty(M) \to \mathbb{R}\) が次を満たすとき，\(v\) を点 \(p\) における <strong>接ベクトル</strong>という：</p> 
+  <ul> <li>線形性： \[ v(af + bg) = a v(f) + b v(g) \] </li> <li>Leibniz則： \[ v(fg) = f(p)\, v(g) + g(p)\, v(f) \] </li> </ul> 
+  <p>点 \(p\) における接ベクトル全体を \(T_pM\) と書き，これを <strong>接空間</strong>という．</p>
 </div>
 
 <!-- 定義 -->
@@ -173,26 +186,22 @@ details.example summary {
     <span class="label">定義</span>
     <span class="title">計量テンソル</span>
   </div>
-
-  <p><strong>計量テンソル</strong> \(g\) は，各点で2つの接ベクトル \(u,v\in T_pM\) に対して実数 \(g(u,v)\) を対応させる \((0,2)\) 型テンソルである。</p> 
-  <p>特に</p> <p>\[ g(v,v) \]</p> <p>はベクトル \(v\) の「長さの2乗」に対応する量であり，ローレンツ幾何ではこの値の号が重要になる。</p>
-</div>
+  <p>滑らかな多様体 \(M\) に対して，各点 \(p \in M\) において写像</p> <p>\[ g_p : T_pM \times T_pM \to \mathbb{R} \]</p> 
+  <p>が与えられており，次を満たすとき，\(g\) を <strong>計量テンソル</strong>という：</p> <ul> <li>双線形性</li> <li>対称性： \[ g_p(u,v) = g_p(v,u) \] </li>
+  <li>非退化性： \[ g_p(u,w)=0 \ \forall w \in T_pM \Rightarrow u=0 \] </li> </ul>
+　</div>
 
 <!-- 定義 -->
 <div class="box definition">
   <div class="box-header">
     <span class="label">定義</span>
-    <span class="title">接ベクトルの因果的分類</span>
+    <span class="title">ローレンツ計量</span>
   </div>
-
- <p>ローレンツ多様体 \((M,g)\) のある点 \(p\in M\) におけるベクトル \(v\in T_pM\) は，\(g(v,v)\) の符号によって次のように分類される。</p>
-  <p> ・<strong>時間的ベクトル</strong>：\(\;g(v,v)&lt;0\)<br> 
-    ・<strong>光的ベクトル</strong>（ヌルベクトル）：\(\;g(v,v)=0,\;v\neq 0\)<br> 
-    ・<strong>空間的ベクトル</strong>：\(\;g(v,v)&gt;0\) </p> 
-  <p>光的ベクトル全体は各点で光円錐をつくり，その内側が時間的方向，外側が空間的方向になる。</p>
-</div>
-
-
+  <p>計量テンソル \(g\) が各点 \(p \in M\) において，ある基底を取ると</p> 
+  <p>\[ \mathrm{diag}(-1,+1,+1,+1) \]</p> <p>と同じ符号構造（符号数 \( (1, n-1) \) または \( (n-1,1) \)）をもつとき，\(g\) を <strong>ローレンツ計量</strong>という．</p> 
+  <p>このとき組 \((M,g)\) を <strong>ローレンツ多様体</strong>という．</p>
+　</div>
+  
 
 <!-- 例 -->
 <details class="example">
