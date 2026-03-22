@@ -229,6 +229,14 @@ details.example summary {
   <p>\[ \varphi_\alpha : O_\alpha \to U_\alpha \subset \mathbb{R}^n \]</p> <p>が存在し、\(U_\alpha\) は \(\mathbb{R}^n\) の開集合である。</p> <ol start="4"> <li>重なり部分における遷移写像</li> </ol>
   <p>\[ \varphi_\alpha \circ \varphi_\beta^{-1} \]</p> <p>は滑らか（\(C^\infty\)）である。</p> </div></div>
 
+<p>
+多様体は局所的にはユークリッド空間と同じ構造を持つが、
+全体としては曲がった空間である。
+そのため、各点での「方向」を定義するには、
+通常のベクトルの概念を一般化する必要がある。
+この考えから、関数への作用として接ベクトルを導入する。
+</p>
+
 <!-- 定義 -->
 <div class="box definition">
   <div class="box-header">
@@ -242,7 +250,12 @@ details.example summary {
   <p>点 \(p\) における接ベクトル全体を \(T_pM\) と書き、これを <strong>接空間</strong>という。</p>
 </div></div>
 
-
+<p>
+各点における接ベクトルが定義できると、
+それらを空間全体にわたって滑らかに配置したものを考えることができる。
+これがベクトル場であり、物理では速度場や流れを表す基本的な対象となる。
+</p>
+  
 <!-- 定義 -->
 <div class="box definition">
   <div class="box-header">
@@ -257,6 +270,11 @@ details.example summary {
   かつ滑らかであるとき、\(X\) を <strong>ベクトル場</strong>という。</p>
 </div></div>
 
+ <p>
+ベクトルが定義できたとしても、それらの「長さ」や「角度」を測ることはまだできない。
+そこで、接空間に内積構造を与える計量テンソルを導入する。
+これにより、幾何学的な量を定義することが可能になる。
+</p> 
   
 <!-- 定義 -->
 <div class="box definition">
@@ -270,6 +288,13 @@ details.example summary {
   <li>非退化性： \[ g_p(u,w)=0 \ \forall w \in T_pM \Rightarrow u=0 \] </li> </ul>
 　</div></div>
 
+ <p>
+通常のリーマン幾何では正定値計量を考えるが、
+相対性理論では時間と空間を区別する必要がある。
+そのため、符号が異なるローレンツ計量を導入し、
+時間方向と空間方向を区別する。
+</p>
+  
 <!-- 定義 -->
 <div class="box definition">
   <div class="box-header">
@@ -287,6 +312,12 @@ details.example summary {
 <section id="Lorentzian_manifold">
   <h2>2.ベクトルの因果分類</h2>
 
+ <p>
+ローレンツ計量の最大の特徴は、
+ベクトルの長さの符号によって
+時間的・空間的・光的という分類ができることである。
+これは時空における因果関係の基礎となる重要な概念である。
+</p> 
 
 <!-- 定義 -->  
 <div class="box definition">
@@ -309,6 +340,12 @@ details.example summary {
       \]</li></ul>
 </div></div>
 
+ <p>
+この分類を幾何的に表現したものが光円錐である。
+光円錐は、その点から因果的に到達可能な方向を可視化するものであり、
+時空構造の基本的な図式を与える。
+</p>
+  
 <!-- 定義 -->
 <div class="box definition">
   <div class="box-header">
@@ -323,6 +360,11 @@ details.example summary {
   </ul>
 </div></div>
 
+ <p>
+この因果分類が物理的意味を持つためには、
+座標の取り方に依存しないことが必要である。
+次の命題は、その不変性を保証するものである。
+</p> 
 
 <!-- 命題 証明 -->
 <div class="box proposition">
@@ -374,6 +416,13 @@ details.example summary {
 <section id="Lorentzian_manifold">
   <h2>3.時空</h2>
 
+<p>
+光円錐は未来と過去の2つの方向を持つが、
+一般にはどちらが未来かは一意に決まらない。
+これを全体で一貫して選べるとき、
+時空は時間向き付け可能であるという。
+</p>
+  
 <!-- 定義 -->
 <div class="box definition">
   <div class="box-header">
@@ -450,7 +499,12 @@ details.example summary {
 <section id="Lorentzian_manifold">
   <h2>4.曲線と因果性</h2>
   
-
+<p>
+時空上での運動や因果関係を考えるためには、
+点ではなく「曲線」を扱う必要がある。
+曲線は粒子の運動や光の伝播を表す基本的対象である。
+</p>
+  
 <!-- 定義 -->
 <div class="box definition">
   <div class="box-header">
@@ -477,6 +531,12 @@ details.example summary {
   <p>をその点における接ベクトルという。</p>
 </div></div>
 
+ <p>
+曲線の接ベクトルの因果分類に基づいて、
+その曲線自体も時間的・因果的に分類することができる。
+これにより、物理的に許される運動を記述できる。
+</p>
+  
 <!-- 定義 -->
 <div class="box definition">
   <div class="box-header">
@@ -495,6 +555,7 @@ details.example summary {
   <div class="box-header">
     <span class="label">定義</span>
     <span class="title">因果曲線</span>
+    
   </div><div class="box-content">
   <p>曲線 \(\gamma : I \to M\) を \(C^1\) 級曲線とする。</p>
   <p>任意の \(\lambda \in I\) に対して</p>
@@ -536,7 +597,11 @@ details.example summary {
 <section id="Lorentzian_manifold">
   <h2>5.因果的先行関係</h2>
 
-
+<p>
+ある点から別の点へ因果曲線が存在するかどうかは、
+その2点の間に因果関係があるかどうかを決定する。
+これを形式化したものが因果的先行関係である。
+</p>
 
 <!-- 定義 -->
 <div class="box definition">
