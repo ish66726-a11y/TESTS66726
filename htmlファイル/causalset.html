@@ -1,1 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>因果集合理論</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --text: #202124;
+      --line: #e0e0e0;
+
+      --blue: #4285f4;
+      --blue-light: #e8f0fe;
+
+      --yellow: #fbbc05;
+      --yellow-light: #fff3c4;
+
+      --green: #34a853;
+      --green-light: #e6f4ea;
+
+      --cream: #fffaf0;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .container {
+      width: min(1000px, 92%);
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      color: var(--blue);
+      border-bottom: 2px solid #ececec;
+      padding-bottom: 8px;
+      margin-top: 0;
+    }
+
+    .box {
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid #d7d7d7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: white;
+    }
+
+    .box-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 14px 18px;
+    }
+
+    .box-content {
+      padding: 16px 18px;
+    }
+
+    .label {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    /* 定義 */
+    .definition .box-header {
+      background: var(--blue);
+      color: white;
+    }
+
+    .definition .box-content {
+      background: var(--blue-light);
+    }
+
+    /* 定理・命題・補題・系 */
+    .theorem .box-header,
+    .proposition .box-header,
+    .lemma .box-header,
+    .corollary .box-header {
+      background: var(--yellow);
+      color: #222;
+    }
+
+    .theorem .box-content,
+    .proposition .box-content,
+    .lemma .box-content,
+    .corollary .box-content {
+      background: var(--yellow-light);
+    }
+
+    /* 証明 */
+    details.proof {
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid #d7d7d7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: white;
+    }
+
+    details.proof summary {
+      background: #c89b2d;
+      color: white;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .proof-content {
+      padding: 16px 18px;
+      background: var(--cream);
+    }
+
+    /* 例 */
+    details.example {
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid #d7d7d7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: white;
+    }
+
+    details.example summary {
+      background: var(--green);
+      color: white;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .example-content {
+      padding: 16px 18px;
+      background: var(--green-light);
+    }
+
+    ul.toc li {
+      margin: 8px 0;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>因果集合理論</h1>
+
+    <!-- 目次 -->
+    <ul class="toc">
+      <li><a href="#sec1">節1</a></li>
+      <li><a href="#sec2">節2</a></li>
+    </ul>
+
+    <!-- 節1 -->
+    <section id="sec1">
+      <h2>節1</h2>
+
+      <!-- 定義 -->
+      <div class="box definition">
+    　<div class="box-header">
+      <span class="label">定義</span>
+      <span class="title">因果集合（Causal Set）</span>
+    　</div>
+    　<div class="box-content">
+      <p>集合 \(C\) と関係 \(\prec\) の組 \((C,\prec)\) が因果集合であるとは，次の条件を満たすことをいう：</p>
+      <p>\[
+      x \prec y \ \text{かつ} \ y \prec x \Rightarrow x = y
+      \]</p>
+      <p>（反対称性）</p>
+      <p>\[
+      x \prec y,\ y \prec z \Rightarrow x \prec z
+      \]</p>
+      <p>（推移性）</p>
+      <p>\[
+      |I[x,y]| < \infty
+      \]</p>
+      <p>（局所有限性）</p>
+    </div>
+  </div>
+
+  <!-- 定義 -->
+  <div class="box definition">
+    <div class="box-header">
+      <span class="label">定義</span>
+      <span class="title">因果区間（Interval）</span>
+    </div>
+    <div class="box-content">
+      <p>因果集合 \((C,\prec)\) において，2点 \(x,y \in C\) に対して，</p>
+      <p>\[
+      I[x,y] := \{ z \in C \mid x \prec z \prec y \}
+      \]</p>
+      <p>を因果区間という。</p>
+    </div>
+  </div>
+
+  <!-- 定義 -->
+  <div class="box definition">
+    <div class="box-header">
+      <span class="label">定義</span>
+      <span class="title">未来（Future）</span>
+    </div>
+    <div class="box-content">
+      <p>点 \(x \in C\) に対して，</p>
+      <p>\[
+      \mathrm{Fut}(x) := \{ y \in C \mid x \prec y \}
+      \]</p>
+      <p>を \(x\) の未来という。</p>
+    </div>
+  </div>
+
+  <!-- 定義 -->
+  <div class="box definition">
+    <div class="box-header">
+      <span class="label">定義</span>
+      <span class="title">過去（Past）</span>
+    </div>
+    <div class="box-content">
+      <p>点 \(x \in C\) に対して，</p>
+      <p>\[
+      \mathrm{Past}(x) := \{ y \in C \mid y \prec x \}
+      \]</p>
+      <p>を \(x\) の過去という。</p>
+    </div>
+  </div>
+
+  <!-- 定義 -->
+  <div class="box definition">
+    <div class="box-header">
+      <span class="label">定義</span>
+      <span class="title">Alexandrov区間</span>
+    </div>
+    <div class="box-content">
+      <p>点 \(x,y \in C\) に対して，</p>
+      <p>\[
+      A[x,y] := \mathrm{Fut}(x) \cap \mathrm{Past}(y)
+      \]</p>
+      <p>を Alexandrov 区間という。</p>
+    </div>
+  </div>
+
+  <!-- 定義 -->
+  <div class="box definition">
+    <div class="box-header">
+      <span class="label">定義</span>
+      <span class="title">濃度（Cardinality）</span>
+    </div>
+    <div class="box-content">
+      <p>集合 \(C\) の濃度を</p>
+      <p>\[
+      |C|
+      \]</p>
+      <p>と書き，要素の個数を表す。</p>
+    </div>
+  </div>
+
+  <!-- 定義 -->
+  <div class="box definition">
+    <div class="box-header">
+      <span class="label">定義</span>
+      <span class="title">基本原理（体積対応）</span>
+    </div>
+    <div class="box-content">
+      <p>因果集合理論においては，連続時空の体積は点の数によって与えられると考える：</p>
+      <p>\[
+      \text{Volume} \sim |C|
+      \]</p>
+      <p>すなわち，「体積は要素数に比例する」という対応が基本原理である。</p>
+    </div>
+  </div>
+
+    <!-- 節2 -->
+    <section id="sec2">
+      <h2>節2</h2>
+
+      <!-- 命題 -->
+      <div class="box proposition">
+        <div class="box-header">
+          <span class="label">命題</span>
+          <span class="title">命題名</span>
+        </div>
+        <div class="box-content">
+          <p>命題の内容を書く。</p>
+        </div>
+      </div>
+
+      <!-- 補題 -->
+      <div class="box lemma">
+        <div class="box-header">
+          <span class="label">補題</span>
+          <span class="title">補題名</span>
+        </div>
+        <div class="box-content">
+          <p>補題の内容を書く。</p>
+        </div>
+      </div>
+
+      <!-- 系 -->
+      <div class="box corollary">
+        <div class="box-header">
+          <span class="label">系</span>
+          <span class="title">系の名前</span>
+        </div>
+        <div class="box-content">
+          <p>系の内容を書く。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
